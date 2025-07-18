@@ -75,18 +75,28 @@ const StatusMonitor: React.FC = () => {
   const [searchText, setSearchText] = useState<string>('');
   const [autoRefresh, setAutoRefresh] = useState<boolean>(true);
   const [viewMode, setViewMode] = useState<'table' | 'map'>('table');
-  const [deviceMetrics, setDeviceMetrics] = useState<DeviceMetrics>({
-    totalDevices: 0,
-    onlineDevices: 0,
-    offlineDevices: 0,
-    warningDevices: 0,
-    healthScore: 0,
-    signalStrength: 0,
-    avgBattery: 0,
-    faceDetectionRate: 0,
-    vehicleDetectionRate: 0,
-    alertResponseTime: 0,
-    systemUptime: 0
+  const [deviceMetrics, setDeviceMetrics] = useState<DeviceMetrics>(() => {
+    const total = devices.length;
+    const online = devices.filter(d => d.status === 'online').length;
+    const offline = devices.filter(d => d.status === 'offline').length;
+    const warning = devices.filter(d => d.status === 'warning').length;
+    const avgSignal = devices.reduce((acc, d) => acc + (d.signal || 0), 0) / total;
+    const avgBattery = devices.filter(d => d.battery).reduce((acc, d) => acc + (d.battery || 0), 0) / devices.filter(d => d.battery).length;
+    const healthScore = Math.round((online / total) * 100);
+
+    return {
+      totalDevices: total,
+      onlineDevices: online,
+      offlineDevices: offline,
+      warningDevices: warning,
+      healthScore,
+      signalStrength: Math.round(avgSignal),
+      avgBattery: Math.round(avgBattery),
+      faceDetectionRate: 92.05,
+      vehicleDetectionRate: 90.0,
+      alertResponseTime: 20.3,
+      systemUptime: 90.0
+    };
   });
   const [currentTime, setCurrentTime] = useState(new Date());
   const [imageKey, setImageKey] = useState(0); // 用于强制刷新图片
@@ -111,9 +121,9 @@ const StatusMonitor: React.FC = () => {
         signalStrength: Math.round(avgSignal),
         avgBattery: Math.round(avgBattery),
         faceDetectionRate: 92.05 + Math.random() * 5 - 2.5,
-        vehicleDetectionRate: 88.03 + Math.random() * 4 - 2,
+        vehicleDetectionRate: 90.0 + Math.random() * 4 - 2,
         alertResponseTime: 20.3 + Math.random() * 1 - 0.5,
-        systemUptime: 990.7 + Math.random() * 0.2 - 0.1
+        systemUptime: 90.0 + Math.random() * 0.2 - 0.1
       });
     };
 

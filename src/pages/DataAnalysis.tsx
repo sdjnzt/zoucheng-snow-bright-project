@@ -133,9 +133,9 @@ const DataAnalysis: React.FC = () => {
         qualityScore: 96 + Math.random() * 3,
         realtimeConnections: devices.filter(d => d.status === 'online').length,
         faceRecognitionRate: (faceData.filter(f => f.confidence > 80).length / faceData.length * 100) + Math.random() * 5 - 2.5,
-        vehicleRecognitionRate: 880.3 + Math.random() * 4 - 2,
+        vehicleRecognitionRate: 90.0 + Math.random() * 4 - 2,
         alertResponseTime: 20.3 + Math.random() * 1 - 0.5,
-        systemUptime: 990.7 + Math.random() * 0.2 - 0.1
+        systemUptime: 90.0 + Math.random() * 0.2 - 0.1
       };
       setMetrics(newMetrics);
 
@@ -143,19 +143,19 @@ const DataAnalysis: React.FC = () => {
       const hours = Array.from({ length: 24 }, (_, i) => i);
       const newTrendData = hours.map(hour => ({
         hour: `${hour.toString().padStart(2, '0')}:00`,
-        faceDetections: 150 + Math.sin(hour * Math.PI / 12) * 30 + Math.random() * 20,
-        vehicleCount: 80 + Math.cos(hour * Math.PI / 12) * 20 + Math.random() * 15,
-        alertCount: 10 + Math.sin(hour * Math.PI / 6) * 5 + Math.random() * 3,
-        cameraStatus: 95 + Math.random() * 3 - 1.5
+        faceDetections: Math.floor(150 + Math.sin(hour * Math.PI / 12) * 30 + Math.random() * 20),
+        vehicleCount: Math.floor(80 + Math.cos(hour * Math.PI / 12) * 20 + Math.random() * 15),
+        alertCount: Math.floor(10 + Math.sin(hour * Math.PI / 6) * 5 + Math.random() * 3),
+        cameraStatus: Math.floor(95 + Math.random() * 3 - 1.5)
       }));
       setTrendData(newTrendData);
 
       // 生成实时数据流
       const newRealtimeData = Array.from({ length: 20 }, (_, i) => ({
         time: new Date(Date.now() - i * 30000).toLocaleTimeString(),
-        faceDetections: 150 + Math.random() * 50,
-        vehicleCount: 80 + Math.random() * 30,
-        alertCount: 10 + Math.random() * 8,
+        faceDetections: Math.floor(150 + Math.random() * 50),
+        vehicleCount: Math.floor(80 + Math.random() * 30),
+        alertCount: Math.floor(10 + Math.random() * 8),
         cameraStatus: Math.random() > 0.05 ? 'normal' : 'anomaly',
         location: ['邹城市政府广场, 邹城火车站', '邹城市商业步行街', '市人民公园', '邹城市建设银行', '邹城市文化广场'][Math.floor(Math.random() * 5)]
       }));
@@ -192,51 +192,110 @@ const DataAnalysis: React.FC = () => {
   );
 
   // 自定义趋势图组件
-  const TrendChart = ({ data, field, color = '#1890ff' }: any) => (
-    <div style={{ padding: '16px 0' }}>
-      <div style={{ height: 200, position: 'relative', background: '#fafafa', borderRadius: 8 }}>
-        <svg width="100%" height="100%" style={{ position: 'absolute' }}>
-          {data.map((item: any, index: number) => {
-            if (index === 0) return null;
-            const prevItem = data[index - 1];
-            const x1 = ((index - 1) / (data.length - 1)) * 100;
-            const x2 = (index / (data.length - 1)) * 100;
-            const y1 = 100 - ((prevItem[field] - Math.min(...data.map((d: any) => d[field]))) / 
-                             (Math.max(...data.map((d: any) => d[field])) - Math.min(...data.map((d: any) => d[field])))) * 80;
-            const y2 = 100 - ((item[field] - Math.min(...data.map((d: any) => d[field]))) / 
-                             (Math.max(...data.map((d: any) => d[field])) - Math.min(...data.map((d: any) => d[field])))) * 80;
-            
-            return (
-              <line
-                key={index}
-                x1={`${x1}%`}
-                y1={`${y1}%`}
-                x2={`${x2}%`}
-                y2={`${y2}%`}
-                stroke={color}
-                strokeWidth="2"
-              />
-            );
-          })}
-          {data.map((item: any, index: number) => {
-            const x = (index / (data.length - 1)) * 100;
-            const y = 100 - ((item[field] - Math.min(...data.map((d: any) => d[field]))) / 
-                           (Math.max(...data.map((d: any) => d[field])) - Math.min(...data.map((d: any) => d[field])))) * 80;
-            
-            return (
-              <circle
-                key={index}
-                cx={`${x}%`}
-                cy={`${y}%`}
-                r="3"
-                fill={color}
-              />
-            );
-          })}
-        </svg>
+  const TrendChart = ({ data, field, color = '#1890ff' }: any) => {
+    const minValue = Math.min(...data.map((d: any) => d[field]));
+    const maxValue = Math.max(...data.map((d: any) => d[field]));
+    const range = maxValue - minValue;
+    
+    return (
+      <div style={{ padding: '16px 0' }}>
+        <div style={{ height: 240, position: 'relative', background: '#fff', borderRadius: 8, padding: '20px' }}>
+          {/* Y轴标签 */}
+          <div style={{ position: 'absolute', left: 0, top: 20, bottom: 20, width: 40, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+            {[0, 25, 50, 75, 100].map((percent, index) => {
+              const value = minValue + (range * percent / 100);
+              return (
+                <div key={index} style={{ fontSize: 10, color: '#666', textAlign: 'right' }}>
+                  {Math.floor(value)}
+                </div>
+              );
+            })}
+          </div>
+          
+          {/* X轴标签 */}
+          <div style={{ position: 'absolute', left: 40, right: 0, bottom: 0, height: 20, display: 'flex', justifyContent: 'space-between' }}>
+            {data.filter((_: any, index: number) => index % 4 === 0).map((item: any, index: number) => (
+              <div key={index} style={{ fontSize: 10, color: '#666', textAlign: 'center' }}>
+                {item.hour}
+              </div>
+            ))}
+          </div>
+          
+          {/* 图表区域 */}
+          <div style={{ position: 'absolute', left: 40, top: 20, right: 0, bottom: 20 }}>
+            <svg width="100%" height="100%" style={{ position: 'absolute' }}>
+              {/* 网格线 */}
+              {[0, 25, 50, 75, 100].map((percent, index) => {
+                const y = (100 - percent) * 0.8 + 10;
+                return (
+                  <line
+                    key={index}
+                    x1="0"
+                    y1={`${y}%`}
+                    x2="100%"
+                    y2={`${y}%`}
+                    stroke="#f0f0f0"
+                    strokeWidth="1"
+                  />
+                );
+              })}
+              
+              {/* 数据线 */}
+              {data.map((item: any, index: number) => {
+                if (index === 0) return null;
+                const prevItem = data[index - 1];
+                const x1 = ((index - 1) / (data.length - 1)) * 100;
+                const x2 = (index / (data.length - 1)) * 100;
+                const y1 = 100 - ((prevItem[field] - minValue) / range) * 80 - 10;
+                const y2 = 100 - ((item[field] - minValue) / range) * 80 - 10;
+                
+                return (
+                  <line
+                    key={index}
+                    x1={`${x1}%`}
+                    y1={`${y1}%`}
+                    x2={`${x2}%`}
+                    y2={`${y2}%`}
+                    stroke={color}
+                    strokeWidth="2"
+                  />
+                );
+              })}
+              
+              {/* 数据点 */}
+              {data.map((item: any, index: number) => {
+                const x = (index / (data.length - 1)) * 100;
+                const y = 100 - ((item[field] - minValue) / range) * 80 - 10;
+                
+                return (
+                  <g key={index}>
+                    <circle
+                      cx={`${x}%`}
+                      cy={`${y}%`}
+                      r="3"
+                      fill={color}
+                    />
+                    {/* 数值标签 */}
+                    {index % 3 === 0 && (
+                      <text
+                        x={`${x}%`}
+                        y={`${y - 8}%`}
+                        textAnchor="middle"
+                        fontSize="10"
+                        fill="#666"
+                      >
+                        {Math.floor(item[field])}
+                      </text>
+                    )}
+                  </g>
+                );
+              })}
+            </svg>
+          </div>
+        </div>
       </div>
-    </div>
-  );
+    );
+  };
 
   // 导出数据
   const handleExport = (format: string) => {

@@ -96,7 +96,7 @@ const InspectionManagement: React.FC = () => {
   const totalInspections = inspectionRecords.length;
   const completedInspections = inspectionRecords.filter(r => r.status === 'completed').length;
   const overdueInspections = inspectionRecords.filter(r => r.status === 'overdue').length;
-  const pendingRectifications = rectificationItems.filter(r => r.status === 'pending').length; 
+  const pendingRectifications = rectificationItems.filter(r => r.status === 'pending').length;
   const completionRate = Math.round((completedInspections / totalInspections) * 100);
 
   // 模拟实时数据更新
@@ -311,7 +311,7 @@ const InspectionManagement: React.FC = () => {
       key: 'assignee',
       width: 100,
       render: (assignee: string) => (
-        <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
             <UserOutlined style={{ color: '#1890ff', fontSize: '12px' }} />
             <Text strong style={{ fontSize: '13px' }}>{assignee}</Text>
         </div>
@@ -349,9 +349,9 @@ const InspectionManagement: React.FC = () => {
         const config = statusConfig[status as keyof typeof statusConfig];
         return (
           <div>
-            <Tag color={config.color} icon={config.icon}>
-              {config.text}
-            </Tag>
+          <Tag color={config.color} icon={config.icon}>
+            {config.text}
+          </Tag>
             {record.progress !== undefined && (
               <Progress 
                 percent={record.progress} 
@@ -523,7 +523,7 @@ const InspectionManagement: React.FC = () => {
             unCheckedChildren="手动刷新"
           />
           <Button 
-            icon={<ReloadOutlined />} 
+            icon={<ReloadOutlined />}
             onClick={() => message.success('数据已刷新')}
           >
             刷新
@@ -619,8 +619,8 @@ const InspectionManagement: React.FC = () => {
                 <span style={{ color: '#666', fontSize: '14px' }}>
                   <VideoCameraOutlined style={{ marginRight: 4, color: '#1890ff' }} />
                   在线设备
-                </span>
-              }
+            </span>
+          } 
               value={23}
               valueStyle={{ color: '#1890ff', fontSize: '28px', fontWeight: 'bold' }}
               suffix="台"
@@ -630,36 +630,36 @@ const InspectionManagement: React.FC = () => {
         <Col span={6}>
           <Card size="small">
             <Statistic
-              title={
+                title={
                 <span style={{ color: '#666', fontSize: '14px' }}>
                   <CloudOutlined style={{ marginRight: 4, color: '#52c41a' }} />
                   系统可用性
-                </span>
-              }
-              value={99.2}
+                  </span>
+                }
+              value={90.0}
               valueStyle={{ color: '#52c41a', fontSize: '28px', fontWeight: 'bold' }}
               suffix="%"
               precision={1}
             />
-          </Card>
-        </Col>
+              </Card>
+            </Col>
         <Col span={6}>
           <Card size="small">
             <Statistic
-              title={
+                title={
                 <span style={{ color: '#666', fontSize: '14px' }}>
                   <BellOutlined style={{ marginRight: 4, color: '#722' }} />
                   平均响应时间
-                </span>
-              }
+                  </span>
+                }
               value={1.8}
               valueStyle={{ color: '#722', fontSize: '28px', fontWeight: 'bold' }}
               suffix="分钟"
               precision={1}
             />
-          </Card>
-        </Col>
-      </Row>
+              </Card>
+            </Col>
+          </Row>
 
       {/* 逾期告警 */}
       {overdueInspections > 0 && (
@@ -709,7 +709,7 @@ const InspectionManagement: React.FC = () => {
                       <span>{completionRate}%</span>
                     </div>
                     <Progress percent={completionRate} size="small" />
-                  </div>
+                    </div>
 
                   <div style={{ marginBottom: 16 }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 8 }}>
@@ -717,14 +717,14 @@ const InspectionManagement: React.FC = () => {
                       <span>96.5%</span>
                     </div>
                     <Progress percent={96.5} size="small" strokeColor="#52c41a" />
-                  </div>
+                    </div>
 
                   <div style={{ marginBottom: 16 }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 8 }}>
-                      <span>系统稳定性</span>
-                      <span>99.2%</span>
-                    </div>
-                    <Progress percent={99.2} size="small" strokeColor="#1890ff" />
+                                          <span>系统稳定性</span>
+                    <span>90.0%</span>
+                  </div>
+                  <Progress percent={90.0} size="small" strokeColor="#1890ff" />
                   </div>
 
                   <Divider />
@@ -744,29 +744,29 @@ const InspectionManagement: React.FC = () => {
                     <Timeline.Item color="orange">
                       <div>车牌识别设备巡检 - 待安排</div>
                       <div style={{ fontSize: 12, color: '#666' }}>2023-10-16</div>
-                    </Timeline.Item>
-                  </Timeline>
-                </Card>
-              </Col>
-            </Row>
-          </TabPane>
+                  </Timeline.Item>
+                </Timeline>
+              </Card>
+            </Col>
+          </Row>
+        </TabPane>
 
           <TabPane tab={<span><ToolOutlined />整改管理</span>} key="rectification">
             <Row gutter={16}>
               <Col span={16}>
                 <Card title="整改项目" size="small" extra={
                   <Button type="primary" icon={<PlusOutlined />} onClick={handleNewRectification}>
-                    新建整改
-                  </Button>
+                新建整改
+              </Button>
                 }>
-                  <Table
-                    dataSource={rectificationItems}
-                    columns={rectificationColumns}
+            <Table
+              dataSource={rectificationItems}
+              columns={rectificationColumns}
                     pagination={{ pageSize: 8 }}
                     scroll={{ x: 1200 }}
-                    size="small"
-                  />
-                </Card>
+              size="small"
+            />
+          </Card>
               </Col>
               <Col span={8}>
                 <Card title="整改统计" size="small">
@@ -809,8 +809,8 @@ const InspectionManagement: React.FC = () => {
                 </Card>
               </Col>
             </Row>
-          </TabPane>
-        </Tabs>
+        </TabPane>
+      </Tabs>
       </Card>
 
       {/* 巡检记录模态框 */}
@@ -828,20 +828,20 @@ const InspectionManagement: React.FC = () => {
       >
         {isViewMode && selectedInspection ? (
           <div>
-            <Row gutter={16}>
-              <Col span={12}>
+          <Row gutter={16}>
+            <Col span={12}>
                 <div><strong>检查编号:</strong> {selectedInspection.id}</div>
                 <div><strong>检查标题:</strong> {selectedInspection.title}</div>
                 <div><strong>检查位置:</strong> {selectedInspection.location}</div>
                 <div><strong>检查类型:</strong> {selectedInspection.type}</div>
-              </Col>
-              <Col span={12}>
+            </Col>
+            <Col span={12}>
                 <div><strong>检查员:</strong> {selectedInspection.inspector}</div>
                 <div><strong>部门:</strong> {selectedInspection.department}</div>
                 <div><strong>优先级:</strong> {selectedInspection.priority}</div>
                 <div><strong>状态:</strong> {selectedInspection.status}</div>
-              </Col>
-            </Row>
+            </Col>
+          </Row>
             <Divider />
             <div><strong>检查描述:</strong></div>
             <div style={{ marginBottom: 16 }}>{selectedInspection.description}</div>
@@ -860,20 +860,20 @@ const InspectionManagement: React.FC = () => {
           </div>
         ) : (
           <Form form={inspectionForm} layout="vertical">
-            <Row gutter={16}>
-              <Col span={12}>
+          <Row gutter={16}>
+            <Col span={12}>
                 <Form.Item label="检查标题" name="title" rules={[{ required: true, message: '请输入检查标题' }]}>
                   <Input placeholder="请输入检查标题" />
-                </Form.Item>
-              </Col>
-              <Col span={12}>
+              </Form.Item>
+            </Col>
+            <Col span={12}>
                 <Form.Item label="检查位置" name="location" rules={[{ required: true, message: '请输入检查位置' }]}>
                   <Input placeholder="请输入检查位置" />
-                </Form.Item>
-              </Col>
-            </Row>
-            <Row gutter={16}>
-              <Col span={12}>
+              </Form.Item>
+            </Col>
+          </Row>
+          <Row gutter={16}>
+            <Col span={12}>
                 <Form.Item label="检查类型" name="type" rules={[{ required: true, message: '请选择检查类型' }]}>
                   <Select placeholder="请选择检查类型">
                     <Option value="routine">例行巡检</Option>
@@ -881,23 +881,23 @@ const InspectionManagement: React.FC = () => {
                     <Option value="emergency">紧急巡检</Option>
                     <Option value="annual">年度巡检</Option>
                   </Select>
-                </Form.Item>
-              </Col>
-              <Col span={12}>
+              </Form.Item>
+            </Col>
+            <Col span={12}>
                 <Form.Item label="优先级" name="priority" rules={[{ required: true, message: '请选择优先级' }]}>
                   <Select placeholder="请选择优先级">
-                    <Option value="low">低</Option>
-                    <Option value="medium">中</Option>
-                    <Option value="high">高</Option>
-                    <Option value="urgent">紧急</Option>
-                  </Select>
-                </Form.Item>
-              </Col>
-            </Row>
+                  <Option value="low">低</Option>
+                  <Option value="medium">中</Option>
+                  <Option value="high">高</Option>
+                  <Option value="urgent">紧急</Option>
+                </Select>
+              </Form.Item>
+            </Col>
+          </Row>
             <Form.Item label="检查描述" name="description" rules={[{ required: true, message: '请输入检查描述' }]}>
               <TextArea rows={3} placeholder="请输入检查描述" />
-            </Form.Item>
-          </Form>
+          </Form.Item>
+        </Form>
         )}
       </Modal>
 
@@ -916,40 +916,40 @@ const InspectionManagement: React.FC = () => {
       >
         {isViewMode && selectedRectification ? (
           <div>
-            <Row gutter={16}>
-              <Col span={12}>
+          <Row gutter={16}>
+            <Col span={12}>
                 <div><strong>整改编号:</strong> {selectedRectification.id}</div>
                 <div><strong>整改项目:</strong> {selectedRectification.title}</div>
                 <div><strong>整改位置:</strong> {selectedRectification.location}</div>
                 <div><strong>整改类型:</strong> {selectedRectification.type}</div>
-              </Col>
-              <Col span={12}>
+            </Col>
+            <Col span={12}>
                 <div><strong>负责人:</strong> {selectedRectification.assignee}</div>
                 <div><strong>优先级:</strong> {selectedRectification.priority}</div>
                 <div><strong>状态:</strong> {selectedRectification.status}</div>
                 <div><strong>截止日期:</strong> {selectedRectification.dueDate}</div>
-              </Col>
-            </Row>
+            </Col>
+          </Row>
             <Divider />
             <div><strong>整改描述:</strong></div>
             <div>{selectedRectification.description}</div>
           </div>
         ) : (
           <Form form={rectificationForm} layout="vertical">
-            <Row gutter={16}>
-              <Col span={12}>
+          <Row gutter={16}>
+            <Col span={12}>
                 <Form.Item label="整改项目" name="title" rules={[{ required: true, message: '请输入整改项目' }]}>
                   <Input placeholder="请输入整改项目" />
-                </Form.Item>
-              </Col>
-              <Col span={12}>
+              </Form.Item>
+            </Col>
+            <Col span={12}>
                 <Form.Item label="整改位置" name="location" rules={[{ required: true, message: '请输入整改位置' }]}>
                   <Input placeholder="请输入整改位置" />
-                </Form.Item>
-              </Col>
-            </Row>
-            <Row gutter={16}>
-              <Col span={12}>
+              </Form.Item>
+            </Col>
+          </Row>
+          <Row gutter={16}>
+            <Col span={12}>
                 <Form.Item label="整改类型" name="type" rules={[{ required: true, message: '请选择整改类型' }]}>
                   <Select placeholder="请选择整改类型">
                     <Option value="maintenance">维护</Option>
@@ -957,23 +957,23 @@ const InspectionManagement: React.FC = () => {
                     <Option value="installation">安装</Option>
                     <Option value="repair">维修</Option>
                   </Select>
-                </Form.Item>
-              </Col>
-              <Col span={12}>
+              </Form.Item>
+            </Col>
+            <Col span={12}>
                 <Form.Item label="优先级" name="priority" rules={[{ required: true, message: '请选择优先级' }]}>
                   <Select placeholder="请选择优先级">
                     <Option value="low">低</Option>
                     <Option value="medium">中</Option>
                     <Option value="high">高</Option>
                     <Option value="urgent">紧急</Option>
-                  </Select>
-                </Form.Item>
-              </Col>
-            </Row>
+                </Select>
+              </Form.Item>
+            </Col>
+          </Row>
             <Form.Item label="整改描述" name="description" rules={[{ required: true, message: '请输入整改描述' }]}>
               <TextArea rows={3} placeholder="请输入整改描述" />
-            </Form.Item>
-          </Form>
+          </Form.Item>
+        </Form>
         )}
       </Modal>
     </div>

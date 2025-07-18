@@ -290,11 +290,11 @@ const OrganizationManagement: React.FC = () => {
       key: 'action',
       render: (_: any, record: any) => (
         <Space size="small">
-          <Button 
+            <Button 
             type="link" 
-            size="small" 
+              size="small"
             icon={<EditOutlined />}
-            onClick={() => handleUserDetail(record)}
+              onClick={() => handleUserDetail(record)}
           >
             详情
           </Button>
@@ -423,7 +423,7 @@ const OrganizationManagement: React.FC = () => {
           <Card size="small">
             <Statistic
               title="系统可用性"
-              value={99.2}
+              value={90.0}
               prefix={<CloudOutlined />}
               valueStyle={{ color: '#52c41a' }}
               suffix="%"
@@ -484,8 +484,8 @@ const OrganizationManagement: React.FC = () => {
                           <Descriptions.Item label="人员数量">{selectedUnitInfo.memberCount}人</Descriptions.Item>
                           <Descriptions.Item label="部门状态">
                             <Badge status="success" text="正常" />
-                          </Descriptions.Item>
-                        </Descriptions>
+                      </Descriptions.Item>
+                    </Descriptions>
                       </Col>
                       <Col span={12}>
                         <div style={{ marginBottom: 16 }}>
@@ -521,7 +521,7 @@ const OrganizationManagement: React.FC = () => {
                         onChange={(e) => setSearchText(e.target.value)}
                         allowClear
                       />
-                    </Col>
+                </Col>
                     <Col span={4}>
                       <Select
                         value={statusFilter}
@@ -534,7 +534,7 @@ const OrganizationManagement: React.FC = () => {
                         <Option value="busy">忙碌</Option>
                         <Option value="offline">离线</Option>
                       </Select>
-                    </Col>
+                </Col>
                     <Col span={4}>
                       <Select
                         value={levelFilter}
@@ -547,7 +547,7 @@ const OrganizationManagement: React.FC = () => {
                         <Option value="中级">中级</Option>
                         <Option value="初级">初级</Option>
                       </Select>
-                    </Col>
+                </Col>
                     <Col span={8}>
                       <Space>
                         <Button 
@@ -555,23 +555,23 @@ const OrganizationManagement: React.FC = () => {
                           icon={<UserAddOutlined />}
                           onClick={handleAddUser}
                         >
-                          添加人员
-                        </Button>
+                        添加人员
+                      </Button>
                         <Button icon={<DownloadOutlined />}>
                           导出
                         </Button>
                       </Space>
-                    </Col>
-                  </Row>
-                </div>
-                
-                <Table
+                </Col>
+              </Row>
+            </div>
+
+            <Table
                   dataSource={selectedUnitUsers}
-                  columns={userColumns}
+              columns={userColumns}
                   pagination={{ pageSize: 8 }}
                   size="small"
                   rowKey="id"
-                />
+            />
               </TabPane>
 
               <TabPane tab={<span><SafetyOutlined />权限管理</span>} key="permissions">
@@ -650,8 +650,8 @@ const OrganizationManagement: React.FC = () => {
               <Row gutter={16}>
                 <Col span={12}>
                   <Form.Item label="姓名" name="name" rules={[{ required: true, message: '请输入姓名' }]}>
-                    <Input placeholder="请输入姓名" />
-                  </Form.Item>
+                <Input placeholder="请输入姓名" />
+              </Form.Item>
                 </Col>
                 <Col span={12}>
                   <Form.Item label="员工ID" name="employeeId" rules={[{ required: true, message: '请输入员工ID' }]}>
@@ -684,7 +684,7 @@ const OrganizationManagement: React.FC = () => {
                 <Col span={12}>
                   <Form.Item label="邮箱" name="email">
                     <Input placeholder="请输入邮箱" />
-                  </Form.Item>
+              </Form.Item>
                 </Col>
               </Row>
               <Form.Item label="所属部门" name="department" rules={[{ required: true, message: '请选择所属部门' }]}>
@@ -719,7 +719,7 @@ const OrganizationManagement: React.FC = () => {
                 status={selectedUser.status === 'online' ? 'success' : selectedUser.status === 'busy' ? 'processing' : 'default'} 
                 text={selectedUser.status === 'online' ? '在线' : selectedUser.status === 'busy' ? '忙碌' : '离线'} 
               />
-            </Descriptions.Item>
+              </Descriptions.Item>
             <Descriptions.Item label="电话">{selectedUser.phone}</Descriptions.Item>
             <Descriptions.Item label="邮箱">{selectedUser.email}</Descriptions.Item>
             <Descriptions.Item label="工作地点">{selectedUser.workLocation}</Descriptions.Item>
@@ -731,8 +731,8 @@ const OrganizationManagement: React.FC = () => {
                   <Tag key={perm} color="blue">{perm}</Tag>
                 ))}
               </Space>
-            </Descriptions.Item>
-          </Descriptions>
+              </Descriptions.Item>
+            </Descriptions>
         )}
       </Modal>
     </div>

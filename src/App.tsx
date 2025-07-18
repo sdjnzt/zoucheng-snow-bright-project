@@ -24,6 +24,8 @@ import {
   MonitorOutlined,
   SecurityScanOutlined,
   GlobalOutlined,
+  FileTextOutlined,
+  FileSearchOutlined,
 } from '@ant-design/icons';
 import Dashboard from './pages/Dashboard';
 import RealTimeAlert from './pages/RealTimeAlert';
@@ -35,6 +37,8 @@ import DataAnalysis from './pages/DataAnalysis';
 import StatusMonitor from './pages/StatusMonitor';
 import SafetyManagement from './pages/SafetyManagement';
 import SystemSettings from './pages/SystemSettings';
+import InspectionManagement from './pages/InspectionManagement';
+import DataReport from './pages/DataReport';
 import ImageTest from './components/ImageTest';
 import FaceInfoTest from './components/FaceInfoTest';
 
@@ -85,6 +89,18 @@ const menuItems = [
     key: '/safety-management',
     icon: <SafetyOutlined />,
     label: '安全管理',
+  },
+  {
+    key: '/inspection-management',
+    icon: <AuditOutlined />,
+    label: '巡检管理',
+  },
+
+
+  {
+    key: '/data-report',
+    icon: <FileTextOutlined />,
+    label: '数据报表',
   },
   {
     key: '/system-settings',
@@ -183,7 +199,7 @@ const AppLayout: React.FC = () => {
               }}
             />
             <div style={{ fontSize: '18px', fontWeight: 'bold' }}>
-              邹城市人民政府办公室雪亮工程项目
+              邹城市人民政府办公室雪亮工程平台
             </div>
           </div>
           
@@ -277,6 +293,8 @@ const AppLayout: React.FC = () => {
             <Route path="/data-analysis" element={<DataAnalysis />} />
             <Route path="/status-monitor" element={<StatusMonitor />} />
             <Route path="/safety-management" element={<SafetyManagement />} />
+            <Route path="/inspection-management" element={<InspectionManagement />} />
+            <Route path="/data-report" element={<DataReport />} />
             <Route path="/system-settings" element={<SystemSettings />} />
             <Route path="/image-test" element={<ImageTest />} />
             <Route path="/face-info-test" element={<FaceInfoTest />} />

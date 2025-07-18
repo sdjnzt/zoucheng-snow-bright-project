@@ -290,28 +290,28 @@ const AutoAlarm: React.FC = () => {
     }
   ];
 
-  // 模拟统计数据
+  // 模拟统计数据 - 使用更真实的数据
   const mockStatistics: AlarmStatistics = {
-    totalRules: 25,
-    activeRules: 20,
-    todayTriggers: 45,
-    totalTriggers: 156,
-    falseAlarmRate: 12.5,
+    totalRules: 18,
+    activeRules: 15,
+    todayTriggers: 23,
+    totalTriggers: 89,
+    falseAlarmRate: 8.7,
     byType: [
-      { type: 'person', count: 52 },
-      { type: 'vehicle', count: 38 },
-      { type: 'behavior', count: 29 },
-      { type: 'crowd', count: 24 },
-      { type: 'safety', count: 13 }
+      { type: 'person', count: 32 },
+      { type: 'vehicle', count: 28 },
+      { type: 'behavior', count: 15 },
+      { type: 'crowd', count: 10 },
+      { type: 'safety', count: 4 }
     ],
     byStatus: [
-      { status: 'active', count: 20 },
-      { status: 'inactive', count: 3 },
-      { status: 'testing', count: 2 }
+      { status: 'active', count: 15 },
+      { status: 'inactive', count: 2 },
+      { status: 'testing', count: 1 }
     ],
     byPriority: [
-      { priority: 'high', count: 12 },
-      { priority: 'medium', count: 10 },
+      { priority: 'high', count: 8 },
+      { priority: 'medium', count: 7 },
       { priority: 'low', count: 3 }
     ]
   };
@@ -729,62 +729,215 @@ const AutoAlarm: React.FC = () => {
         </Col>
       </Row>
 
-      {/* 图表区域 */}
-      <Row gutter={16} style={{ marginBottom: '24px' }}>
-        <Col span={8}>
-          <Card title="规则类型分布" size="small">
-            <Pie
-              data={typeChartData}
-              angleField="value"
-              colorField="type"
-              radius={0.8}
-              label={{
-                content: (item: any) => `${item.name} ${item.percentage}`,
-              }}
+      {/* 系统状态监控 */}
+      <Card title="系统状态监控" style={{ marginBottom: '32px' }}>
+        <Row gutter={24}>
+          <Col span={8}>
+            <Alert
+              message="报警系统运行正常"
+              description="所有报警规则运行正常，无异常情况"
+              type="success"
+              showIcon
+              icon={<CheckCircleOutlined />}
+            />
+          </Col>
+          <Col span={8}>
+            <Alert
+              message="AI识别准确率良好"
+              description="人脸识别准确率: 87.9%，行为识别准确率: 82.3%"
+              type="info"
+              showIcon
+              icon={<SecurityScanOutlined />}
+            />
+          </Col>
+          <Col span={8}>
+            <Alert
+              message="响应时间达标"
+              description="平均响应时间: 20.6分钟，满足30分钟内响应要求"
+              type="success"
+              showIcon
+              icon={<ClockCircleOutlined />}
+            />
+          </Col>
+        </Row>
+      </Card>
 
-            />
+      {/* 快速操作面板 */}
+      <Card title="快速操作" style={{ marginBottom: '32px' }}>
+        <Row gutter={24}>
+          <Col span={6}>
+            <Card size="small" hoverable onClick={() => handleAddRule()} style={{ height: '120px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <div style={{ textAlign: 'center' }}>
+                <PlusOutlined style={{ fontSize: '32px', color: '#1890ff', marginBottom: '12px', display: 'block' }} />
+                <div style={{ fontSize: '14px', fontWeight: '500' }}>添加规则</div>
+              </div>
+            </Card>
+          </Col>
+          <Col span={6}>
+            <Card size="small" hoverable onClick={() => {
+              notification.info({
+                message: '系统测试',
+                description: '正在执行报警规则测试...',
+              });
+            }} style={{ height: '120px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <div style={{ textAlign: 'center' }}>
+                <SettingOutlined style={{ fontSize: '32px', color: '#faad14', marginBottom: '12px', display: 'block' }} />
+                <div style={{ fontSize: '14px', fontWeight: '500' }}>规则测试</div>
+              </div>
+            </Card>
+          </Col>
+          <Col span={6}>
+            <Card size="small" hoverable onClick={() => {
+              notification.info({
+                message: '批量操作',
+                description: '正在准备批量操作面板...',
+              });
+            }} style={{ height: '120px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <div style={{ textAlign: 'center' }}>
+                <SafetyOutlined style={{ fontSize: '32px', color: '#52c41a', marginBottom: '12px', display: 'block' }} />
+                <div style={{ fontSize: '14px', fontWeight: '500' }}>批量操作</div>
+              </div>
+            </Card>
+          </Col>
+          <Col span={6}>
+            <Card size="small" hoverable onClick={() => {
+              notification.info({
+                message: '报表生成',
+                description: '正在生成报警统计报表...',
+              });
+            }} style={{ height: '120px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+              <div style={{ textAlign: 'center' }}>
+                <ExportOutlined style={{ fontSize: '32px', color: '#722ed1', marginBottom: '12px', display: 'block' }} />
+                <div style={{ fontSize: '14px', fontWeight: '500' }}>生成报表</div>
+              </div>
+            </Card>
+          </Col>
+        </Row>
+      </Card>
+
+      {/* 图表区域 */}
+      <Row gutter={24} style={{ marginBottom: '32px' }}>
+        <Col span={12}>
+          <Card title="规则类型分布" size="small" style={{ height: '400px' }}>
+            <div style={{ padding: '20px' }}>
+              <Row gutter={[16, 16]}>
+                <Col span={8}>
+                  <Card size="small" style={{ textAlign: 'center', background: 'linear-gradient(135deg, #1890ff, #40a9ff)' }}>
+                    <div style={{ color: 'white', fontSize: '24px', fontWeight: 'bold' }}>32</div>
+                    <div style={{ color: 'white', fontSize: '14px' }}>人员检测</div>
+                    <div style={{ color: 'rgba(255,255,255,0.8)', fontSize: '12px' }}>36.0%</div>
+                  </Card>
+                </Col>
+                <Col span={8}>
+                  <Card size="small" style={{ textAlign: 'center', background: 'linear-gradient(135deg, #52c41a, #73d13d)' }}>
+                    <div style={{ color: 'white', fontSize: '24px', fontWeight: 'bold' }}>28</div>
+                    <div style={{ color: 'white', fontSize: '14px' }}>车辆检测</div>
+                    <div style={{ color: 'rgba(255,255,255,0.8)', fontSize: '12px' }}>31.5%</div>
+                  </Card>
+                </Col>
+                <Col span={8}>
+                  <Card size="small" style={{ textAlign: 'center', background: 'linear-gradient(135deg, #faad14, #ffc53d)' }}>
+                    <div style={{ color: 'white', fontSize: '24px', fontWeight: 'bold' }}>15</div>
+                    <div style={{ color: 'white', fontSize: '14px' }}>行为识别</div>
+                    <div style={{ color: 'rgba(255,255,255,0.8)', fontSize: '12px' }}>16.9%</div>
+                  </Card>
+                </Col>
+                <Col span={8}>
+                  <Card size="small" style={{ textAlign: 'center', background: 'linear-gradient(135deg, #722ed1, #9254de)' }}>
+                    <div style={{ color: 'white', fontSize: '24px', fontWeight: 'bold' }}>10</div>
+                    <div style={{ color: 'white', fontSize: '14px' }}>人群监控</div>
+                    <div style={{ color: 'rgba(255,255,255,0.8)', fontSize: '12px' }}>11.2%</div>
+                  </Card>
+                </Col>
+                <Col span={8}>
+                  <Card size="small" style={{ textAlign: 'center', background: 'linear-gradient(135deg, #f5222d, #ff4d4f)' }}>
+                    <div style={{ color: 'white', fontSize: '24px', fontWeight: 'bold' }}>4</div>
+                    <div style={{ color: 'white', fontSize: '14px' }}>安全监控</div>
+                    <div style={{ color: 'rgba(255,255,255,0.8)', fontSize: '12px' }}>4.5%</div>
+                  </Card>
+                </Col>
+                <Col span={8}>
+                  <Card size="small" style={{ textAlign: 'center', background: 'linear-gradient(135deg, #13c2c2, #36cfc9)' }}>
+                    <div style={{ color: 'white', fontSize: '24px', fontWeight: 'bold' }}>0</div>
+                    <div style={{ color: 'white', fontSize: '14px' }}>自定义</div>
+                    <div style={{ color: 'rgba(255,255,255,0.8)', fontSize: '12px' }}>0%</div>
+                  </Card>
+                </Col>
+              </Row>
+              <div style={{ marginTop: '20px', textAlign: 'center' }}>
+                <Text type="secondary">总计: 89 次触发</Text>
+              </div>
+            </div>
           </Card>
         </Col>
-        <Col span={8}>
-          <Card title="规则状态分布" size="small">
-            <Column
-              data={statusChartData}
-              xField="status"
-              yField="value"
-              label={{
-                position: 'top',
-                style: {
-                  fill: '#FFFFFF',
-                  opacity: 0.6,
-                },
-              }}
-            />
-          </Card>
-        </Col>
-        <Col span={8}>
-          <Card title="报警触发趋势" size="small">
-            <Area
-              data={[
-                { time: '00:00', count: 5 },
-                { time: '04:00', count: 2 },
-                { time: '08:00', count: 15 },
-                { time: '12:00', count: 25 },
-                { time: '16:00', count: 18 },
-                { time: '20:00', count: 12 },
-              ]}
-              xField="time"
-              yField="count"
-            />
+        <Col span={12}>
+          <Card title="报警触发趋势" size="small" style={{ height: '400px' }}>
+            <div style={{ padding: '20px' }}>
+              <Row gutter={[16, 16]}>
+                <Col span={6}>
+                  <div style={{ textAlign: 'center', padding: '16px', background: '#f5f5f5', borderRadius: '8px' }}>
+                    <div style={{ fontSize: '20px', fontWeight: 'bold', color: '#1890ff' }}>8</div>
+                    <div style={{ fontSize: '12px', color: '#666' }}>12:00</div>
+                  </div>
+                </Col>
+                <Col span={6}>
+                  <div style={{ textAlign: 'center', padding: '16px', background: '#f5f5f5', borderRadius: '8px' }}>
+                    <div style={{ fontSize: '20px', fontWeight: 'bold', color: '#52c41a' }}>6</div>
+                    <div style={{ fontSize: '12px', color: '#666' }}>16:00</div>
+                  </div>
+                </Col>
+                <Col span={6}>
+                  <div style={{ textAlign: 'center', padding: '16px', background: '#f5f5f5', borderRadius: '8px' }}>
+                    <div style={{ fontSize: '20px', fontWeight: 'bold', color: '#faad14' }}>5</div>
+                    <div style={{ fontSize: '12px', color: '#666' }}>08:00</div>
+                  </div>
+                </Col>
+                <Col span={6}>
+                  <div style={{ textAlign: 'center', padding: '16px', background: '#f5f5f5', borderRadius: '8px' }}>
+                    <div style={{ fontSize: '20px', fontWeight: 'bold', color: '#722ed1' }}>4</div>
+                    <div style={{ fontSize: '12px', color: '#666' }}>20:00</div>
+                  </div>
+                </Col>
+              </Row>
+              <div style={{ marginTop: '20px', textAlign: 'center' }}>
+                <Text type="secondary">今日触发峰值: 8次 (12:00)</Text>
+              </div>
+            </div>
           </Card>
         </Col>
       </Row>
 
       {/* 标签页内容 */}
-      <Card>
+      <Card title="报警管理" extra={
+        <Space>
+          <Button icon={<ReloadOutlined />} onClick={() => setLoading(true)}>
+            刷新
+          </Button>
+          <Button icon={<ExportOutlined />} onClick={() => {
+            notification.success({
+              message: '导出成功',
+              description: '报警数据已导出',
+            });
+          }}>
+            导出
+          </Button>
+        </Space>
+      }>
         <Tabs activeKey={activeTab} onChange={setActiveTab}>
-          <TabPane tab="报警规则" key="rules">
+          <TabPane tab={
+            <span>
+              <BellOutlined />
+              报警规则 ({alarmRules.length})
+            </span>
+          } key="rules">
             <div style={{ marginBottom: '16px' }}>
-              <Text>共 {alarmRules.length} 条规则</Text>
+              <Space>
+                <Text>共 {alarmRules.length} 条规则</Text>
+                <Text type="secondary">|</Text>
+                <Text type="secondary">活跃: {alarmRules.filter(r => r.enabled).length} 条</Text>
+                <Text type="secondary">|</Text>
+                <Text type="secondary">测试中: {alarmRules.filter(r => r.status === 'testing').length} 条</Text>
+              </Space>
             </div>
             <Table
               columns={ruleColumns}
@@ -801,9 +954,22 @@ const AutoAlarm: React.FC = () => {
               scroll={{ x: 1200 }}
             />
           </TabPane>
-          <TabPane tab="报警历史" key="history">
+          <TabPane tab={
+            <span>
+              <ClockCircleOutlined />
+              报警历史 ({alarmHistory.length})
+            </span>
+          } key="history">
             <div style={{ marginBottom: '16px' }}>
-              <Text>共 {alarmHistory.length} 条记录</Text>
+              <Space>
+                <Text>共 {alarmHistory.length} 条记录</Text>
+                <Text type="secondary">|</Text>
+                <Text type="secondary">今日: {alarmHistory.filter(h => h.timestamp.includes('2025-01-15')).length} 条</Text>
+                <Text type="secondary">|</Text>
+                <Text type="secondary">待处理: {alarmHistory.filter(h => h.status === 'triggered').length} 条</Text>
+                <Text type="secondary">|</Text>
+                <Text type="secondary">误报: {alarmHistory.filter(h => h.status === 'false_alarm').length} 条</Text>
+              </Space>
             </div>
             <Table
               columns={historyColumns}

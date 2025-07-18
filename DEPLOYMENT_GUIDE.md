@@ -25,7 +25,7 @@ git init
 git add .
 
 # 提交代码
-git commit -m "Initial commit: 山东金科星融合通信管理平台"
+git commit -m "Initial commit: 山东邹城市人民政府办公室雪亮工程平台"
 
 # 添加远程仓库（替换为你的仓库地址）
 git remote add origin https://github.com/your-username/your-repo-name.git

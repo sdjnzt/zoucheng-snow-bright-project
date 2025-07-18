@@ -42,9 +42,9 @@ const SafetyManagement: React.FC = () => {
   useEffect(() => {
     if (autoAlert) {
       const interval = setInterval(() => {
-        // 模拟新事件生成
+        // 模拟新事件生成（静默处理，不显示提示）
         if (Math.random() > 0.95) {
-          message.warning('检测到新的安全事件');
+          // 静默处理新事件，不显示提示
         }
       }, 100);
       return () => clearInterval(interval);
