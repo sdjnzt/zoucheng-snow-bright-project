@@ -84,11 +84,11 @@ const organizationUnits = [
 
 // 雪亮工程人员数据
 const users = [
-  { id: 1, name: '张主任', employeeId: 'EMP01', role: '监控中心主任', level: '高级', department: '雪亮工程监控中心', phone: '1380013801', email: 'zhang@xueliang.gov.cn', workLocation: '邹城市政府大楼', status: 'online', permissions: ['admin', 'view', 'edit', 'delete'], lastLogin: '2023-10-15 14:00', joinDate: '2020-05-15' },
-  { id: 2, name: '李工程师', employeeId: 'EMP002', role: '技术部经理', level: '高级', department: '技术部', phone: '1380013802', email: 'li@xueliang.gov.cn', workLocation: '邹城市政府大楼', status: 'online', permissions: ['manager', 'view', 'edit'], lastLogin: '2023-10-15 14:00', joinDate: '2021-08-20' },
-  { id: 3, name: '王技术员', employeeId: 'EMP03', role: '设备维护工程师', level: '中级', department: '设备维护组', phone: '138001383', email: 'wang@xueliang.gov.cn', workLocation: '邹城市政府广场', status: 'busy', permissions: ['view', 'edit'], lastLogin: '2023-10-15 14:00', joinDate: '2022-10-01' },
-  { id: 4, name: '陈安全员', employeeId: 'EMP004', role: '安全部经理', level: '高级', department: '安全部', phone: '138001384', email: 'chen@xueliang.gov.cn', workLocation: '邹城市政府大楼', status: 'online', permissions: ['manager', 'view', 'edit'], lastLogin: '2023-10-15 14:00', joinDate: '2020-05-15' },
-  { id: 5, name: '赵巡逻员', employeeId: 'EMP05', role: '巡逻队员', level: '初级', department: '巡逻队', phone: '1380013805', email: 'zhao@xueliang.gov.cn', workLocation: '邹城市商业步行街', status: 'offline', permissions: ['view'], lastLogin: '2023-10-15 14:00', joinDate: '2023-10-01' }
+  { id: 1, name: '张主任', employeeId: 'EMP01', role: '监控中心主任', level: '高级', department: '雪亮工程监控中心', phone: '1380013801', email: 'zhang@xueliang.gov.cn', workLocation: '邹城市政府大楼', status: 'online', permissions: ['admin', 'view', 'edit', 'delete'], lastLogin: '2025-07-15 14:00', joinDate: '2020-05-15' },
+  { id: 2, name: '李工程师', employeeId: 'EMP002', role: '技术部经理', level: '高级', department: '技术部', phone: '1380013802', email: 'li@xueliang.gov.cn', workLocation: '邹城市政府大楼', status: 'online', permissions: ['manager', 'view', 'edit'], lastLogin: '2025-07-15 14:00', joinDate: '2021-08-20' },
+  { id: 3, name: '王技术员', employeeId: 'EMP03', role: '设备维护工程师', level: '中级', department: '设备维护组', phone: '138001383', email: 'wang@xueliang.gov.cn', workLocation: '邹城市政府广场', status: 'busy', permissions: ['view', 'edit'], lastLogin: '2025-07-15 14:00', joinDate: '2022-10-01' },
+  { id: 4, name: '陈安全员', employeeId: 'EMP004', role: '安全部经理', level: '高级', department: '安全部', phone: '138001384', email: 'chen@xueliang.gov.cn', workLocation: '邹城市政府大楼', status: 'online', permissions: ['manager', 'view', 'edit'], lastLogin: '2025-07-15 14:00', joinDate: '2020-05-15' },
+  { id: 5, name: '赵巡逻员', employeeId: 'EMP05', role: '巡逻队员', level: '初级', department: '巡逻队', phone: '1380013805', email: 'zhao@xueliang.gov.cn', workLocation: '邹城市商业步行街', status: 'offline', permissions: ['view'], lastLogin: '2025-07-15 14:00', joinDate: '2025-07-01' }
 ];
 
 const { Option } = Select;

@@ -248,7 +248,7 @@ const RealTimeAlert: React.FC = () => {
       level: 'high',
       location: '邹城市第一中学-东门',
       description: '检测到可疑人员徘徊，疑似在观察学校周边环境',
-      timestamp: '2025-01-15 14:30:25',
+      timestamp: '2025-07-15 14:30:25',
       status: 'active',
       cameraId: 'CAM001',
       cameraName: '一中东门监控-01',
@@ -264,8 +264,8 @@ const RealTimeAlert: React.FC = () => {
       tags: ['学校', '可疑人员', '徘徊'],
       recommendations: ['立即派遣巡逻人员前往现场', '通知学校安保部门', '调取周边监控录像'],
       history: [
-        { id: '1', action: '创建预警', operator: '系统', timestamp: '2025-01-15 14:30:25' },
-        { id: '2', action: '指派处理', operator: '张警官', timestamp: '2025-01-15 14:31:00' }
+        { id: '1', action: '创建预警', operator: '系统', timestamp: '2025-07-15 14:30:25' },
+        { id: '2', action: '指派处理', operator: '张警官', timestamp: '2025-07-15 14:31:00' }
       ]
     },
     {
@@ -274,7 +274,7 @@ const RealTimeAlert: React.FC = () => {
       level: 'medium',
       location: '邹城市人民广场-中心区域',
       description: '广场人员密度异常，超过安全阈值',
-      timestamp: '2025-01-15 14:28:10',
+      timestamp: '2025-07-15 14:28:10',
       status: 'processing',
       cameraId: 'CAM015',
       cameraName: '广场中心监控-03',
@@ -289,9 +289,9 @@ const RealTimeAlert: React.FC = () => {
       tags: ['广场', '人群密集', '安全阈值'],
       recommendations: ['疏散部分人群', '增加安保人员', '监控人群流动'],
       history: [
-        { id: '1', action: '创建预警', operator: '系统', timestamp: '2025-01-15 14:28:10' },
-        { id: '2', action: '指派处理', operator: '李警官', timestamp: '2025-01-15 14:29:00' },
-        { id: '3', action: '开始处理', operator: '李警官', timestamp: '2025-01-15 14:30:00' }
+        { id: '1', action: '创建预警', operator: '系统', timestamp: '2025-07-15 14:28:10' },
+        { id: '2', action: '指派处理', operator: '李警官', timestamp: '2025-07-15 14:29:00' },
+        { id: '3', action: '开始处理', operator: '李警官', timestamp: '2025-07-15 14:30:00' }
       ]
     },
     {
@@ -300,7 +300,7 @@ const RealTimeAlert: React.FC = () => {
       level: 'critical',
       location: '邹城市实验小学-南门',
       description: '检测到未授权车辆在校门口长时间停留',
-      timestamp: '2025-01-15 14:25:45',
+      timestamp: '2025-07-15 14:25:45',
       status: 'active',
       cameraId: 'CAM008',
       cameraName: '实验小学南门监控-02',
@@ -314,8 +314,8 @@ const RealTimeAlert: React.FC = () => {
       tags: ['学校', '未授权车辆', '长时间停留'],
       recommendations: ['立即前往现场检查', '联系车主', '必要时拖车处理'],
       history: [
-        { id: '1', action: '创建预警', operator: '系统', timestamp: '2025-01-15 14:25:45' },
-        { id: '2', action: '指派处理', operator: '王警官', timestamp: '2025-01-15 14:26:00' }
+        { id: '1', action: '创建预警', operator: '系统', timestamp: '2025-07-15 14:25:45' },
+        { id: '2', action: '指派处理', operator: '王警官', timestamp: '2025-07-15 14:26:00' }
       ]
     },
     {
@@ -324,7 +324,7 @@ const RealTimeAlert: React.FC = () => {
       level: 'high',
       location: '邹城市商业步行街-中段',
       description: '检测到异常行为模式，疑似扒窃行为',
-      timestamp: '2025-01-15 14:22:30',
+      timestamp: '2025-07-15 14:22:30',
       status: 'resolved',
       cameraId: 'CAM023',
       cameraName: '步行街监控-05',
@@ -339,9 +339,9 @@ const RealTimeAlert: React.FC = () => {
       tags: ['商业街', '扒窃', '异常行为'],
       recommendations: ['加强巡逻密度', '安装更多监控设备', '提高商户安全意识'],
       history: [
-        { id: '1', action: '创建预警', operator: '系统', timestamp: '2025-01-15 14:22:30' },
-        { id: '2', action: '指派处理', operator: '赵警官', timestamp: '2025-01-15 14:23:00' },
-        { id: '3', action: '开始处理', operator: '赵警官', timestamp: '2025-01-15 14:24:00', remarks: '嫌疑人已被控制' }
+        { id: '1', action: '创建预警', operator: '系统', timestamp: '2025-07-15 14:22:30' },
+        { id: '2', action: '指派处理', operator: '赵警官', timestamp: '2025-07-15 14:23:00' },
+        { id: '3', action: '开始处理', operator: '赵警官', timestamp: '2025-07-15 14:24:00', remarks: '嫌疑人已被控制' }
       ]
     },
     {
@@ -350,7 +350,7 @@ const RealTimeAlert: React.FC = () => {
       level: 'medium',
       location: '邹城市体育中心-停车场',
       description: '检测到车辆碰撞风险，两车距离过近',
-      timestamp: '2025-01-15 14:20:15',
+      timestamp: '2025-07-15 14:20:15',
       status: 'false_alarm',
       cameraId: 'CAM031',
       cameraName: '体育中心停车场监控-01',
@@ -364,9 +364,9 @@ const RealTimeAlert: React.FC = () => {
       images: [getDefaultMonitorVideo()],
       tags: ['停车场', '车辆碰撞', '误报'],
       history: [
-        { id: '1', action: '创建预警', operator: '系统', timestamp: '2025-01-15 14:20:15' },
-        { id: '2', action: '指派处理', operator: '陈警官', timestamp: '2025-01-15 14:21:00' },
-        { id: '3', action: '确认误报', operator: '陈警官', timestamp: '2025-01-15 14:22:00', remarks: '车辆正常停车' }
+        { id: '1', action: '创建预警', operator: '系统', timestamp: '2025-07-15 14:20:15' },
+        { id: '2', action: '指派处理', operator: '陈警官', timestamp: '2025-07-15 14:21:00' },
+        { id: '3', action: '确认误报', operator: '陈警官', timestamp: '2025-07-15 14:22:00', remarks: '车辆正常停车' }
       ]
     }
   ];

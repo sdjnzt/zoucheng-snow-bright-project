@@ -24,11 +24,11 @@ const { Option } = Select;
 
 // 雪亮工程安全事件数据
 const safetyEvents = [
-  { id: '1', type: 'intrusion', location: '邹城市政府广场', severity: 'high', status: 'active', timestamp: '2023-10-15T14:15:00', description: '检测到可疑人员进入政府广场禁区,    cameraId: dev001', faceDetected: true, vehicleDetected: false, responseTime: '2', assignedTeam: '巡逻队01' },
-  { id: '2', type: 'traffic', location: '邹城市中心十字路口', severity: 'medium', status: 'investigating', timestamp: '2023-10-15T14:16:00', description: '交通拥堵，需要交警疏导,    cameraId: dev003', faceDetected: false, vehicleDetected: true, responseTime: '5', assignedTeam: '交警队01' },
-  { id: '3', type: 'emergency', location: '邹城市人民医院', severity: 'critical', status: 'active', timestamp: '2023-10-15T14:18:00', description: '医院门口发生交通事故，需要紧急救援,    cameraId: dev010', faceDetected: true, vehicleDetected: true, responseTime: '1', assignedTeam: '消防队01' },
-  { id: '4', type: 'fire', location: '邹城市商业步行街', severity: 'high', status: 'resolved', timestamp: '2023-10-15T14:21:00', description: '商业街发现火情，已及时扑灭,    cameraId: dev004', faceDetected: true, vehicleDetected: false, responseTime: '3', assignedTeam: '消防队02' },
-  { id: '5', type: 'intrusion', location: '邹城市建设银行', severity: 'critical', status: 'active', timestamp: '2023-10-15T14:22:00', description: '银行门口发现可疑人员徘徊,    cameraId: dev006', faceDetected: true, vehicleDetected: false, responseTime: '1', assignedTeam: '巡逻队02' }
+  { id: '1', type: 'intrusion', location: '邹城市政府广场', severity: 'high', status: 'active', timestamp: '2025-07-15T14:15:00', description: '检测到可疑人员进入政府广场禁区,    cameraId: dev001', faceDetected: true, vehicleDetected: false, responseTime: '2', assignedTeam: '巡逻队01' },
+  { id: '2', type: 'traffic', location: '邹城市中心十字路口', severity: 'medium', status: 'investigating', timestamp: '2025-07-15T14:16:00', description: '交通拥堵，需要交警疏导,    cameraId: dev003', faceDetected: false, vehicleDetected: true, responseTime: '5', assignedTeam: '交警队01' },
+  { id: '3', type: 'emergency', location: '邹城市人民医院', severity: 'critical', status: 'active', timestamp: '2025-07-15T14:18:00', description: '医院门口发生交通事故，需要紧急救援,    cameraId: dev010', faceDetected: true, vehicleDetected: true, responseTime: '1', assignedTeam: '消防队01' },
+  { id: '4', type: 'fire', location: '邹城市商业步行街', severity: 'high', status: 'resolved', timestamp: '2025-07-15T14:21:00', description: '商业街发现火情，已及时扑灭,    cameraId: dev004', faceDetected: true, vehicleDetected: false, responseTime: '3', assignedTeam: '消防队02' },
+  { id: '5', type: 'intrusion', location: '邹城市建设银行', severity: 'critical', status: 'active', timestamp: '2025-07-15T14:22:00', description: '银行门口发现可疑人员徘徊,    cameraId: dev006', faceDetected: true, vehicleDetected: false, responseTime: '1', assignedTeam: '巡逻队02' }
 ];
 
 const SafetyManagement: React.FC = () => {

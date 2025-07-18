@@ -254,9 +254,9 @@ const { Step } = Steps;
 
 // 雪亮工程用户数据
 const users = [
-  { id: 1, name: '张主任', employeeId: 'EMP1', department: '雪亮工程监控中心', position: '监控中心主任', email: 'zhang@xueliang.gov.cn', phone: '138001381', status: 'active', level: 'admin', lastLogin: '2023-10-01 10:00', avatar: '/api/placeholder/40/40', permissions: ['user_manage', 'system_config', 'data_backup', 'system_monitor'] },
-  { id: 2, name: '李工程师', employeeId: 'EMP002', department: '技术部', position: '技术部经理', email: 'li@xueliang.gov.cn', phone: '138001382', status: 'active', level: 'manager', lastLogin: '2023-10-01 10:00', avatar: '/api/placeholder/40/40', permissions: ['system_config', 'system_monitor'] },
-  { id: 3, name: '王技术员', employeeId: 'EMP03', department: '设备维护组', position: '设备维护工程师', email: 'wang@xueliang.gov.cn', phone: '138001383', status: 'active', level: 'user', lastLogin: '2023-10-15 14:00', avatar: '/api/placeholder/40/40', permissions: ['system_monitor'] }
+  { id: 1, name: '张主任', employeeId: 'EMP1', department: '雪亮工程监控中心', position: '监控中心主任', email: 'zhang@xueliang.gov.cn', phone: '138001381', status: 'active', level: 'admin', lastLogin: '2025-07-01 10:00', avatar: '/api/placeholder/40/40', permissions: ['user_manage', 'system_config', 'data_backup', 'system_monitor'] },
+  { id: 2, name: '李工程师', employeeId: 'EMP002', department: '技术部', position: '技术部经理', email: 'li@xueliang.gov.cn', phone: '138001382', status: 'active', level: 'manager', lastLogin: '2025-07-01 10:00', avatar: '/api/placeholder/40/40', permissions: ['system_config', 'system_monitor'] },
+  { id: 3, name: '王技术员', employeeId: 'EMP03', department: '设备维护组', position: '设备维护工程师', email: 'wang@xueliang.gov.cn', phone: '138001383', status: 'active', level: 'user', lastLogin: '2025-07-15 14:00', avatar: '/api/placeholder/40/40', permissions: ['system_monitor'] }
 ];
 
 // 用户管理组件
@@ -781,9 +781,9 @@ const SystemConfiguration: React.FC = () => {
 // 数据备份组件
 const DataBackup: React.FC = () => {
   const [backupList] = useState([
-    { id: 1, name: '完整备份_20231015', type: 'full', size: '20.5GB', date: '2023-10-15 00:00', status: 'completed' },
-    { id: 2, name: '增量备份_20231014', type: 'incremental', size: '50MB', date: '2023-10-14 00:00', status: 'completed' },
-    { id: 3, name: '完整备份_20231013', type: 'full', size: '20.3GB', date: '2023-10-13 00:00', status: 'completed' }
+    { id: 1, name: '完整备份_20231015', type: 'full', size: '20.5GB', date: '2025-07-15 00:00', status: 'completed' },
+    { id: 2, name: '增量备份_20231014', type: 'incremental', size: '50MB', date: '2025-07-14 00:00', status: 'completed' },
+    { id: 3, name: '完整备份_20231013', type: 'full', size: '20.3GB', date: '2025-07-13 00:00', status: 'completed' }
   ]);
 
   const handleCreateBackup = () => {

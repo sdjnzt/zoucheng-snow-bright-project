@@ -66,18 +66,18 @@ const { RangePicker } = DatePicker;
 
 // 雪亮工程巡检记录数据
 const inspectionRecords = [
-  { id: 'INS01', title: '监控摄像头设备巡检', location: '邹城市政府广场', type: 'routine', inspector: '张工程师', department: '技术部', priority: 'medium', status: 'completed', scheduledDate: '2023-10-15', completedDate: '2023-10-15', score: 95, description: '检查监控摄像头运行状态、图像质量、存储功能等', findings: '设备运行正常，图像清晰度良好', recommendations: '建议定期清洁镜头，优化存储空间' },
-  { id: 'INS02', title: '人脸识别系统巡检', location: '邹城火车站', type: 'special', inspector: '李技术员', department: '技术部', priority: 'high', status: 'in_progress', scheduledDate: '2023-10-15', description: '检查人脸识别系统识别率、数据库连接、报警功能等', findings: '识别率稳定在92%', recommendations: '建议优化夜间识别算法' },
-  { id: 'INS03', title: '车牌识别设备巡检', location: '邹城市高速入口', type: 'routine', inspector: '王维护员', department: '维护部', priority: 'medium', status: 'scheduled', scheduledDate: '2023-10-16', description: '检查车牌识别设备、数据传输、存储系统等', findings: '', recommendations: '' },
-  { id: 'INS004', title: '对讲设备系统巡检', location: '邹城市商业步行街', type: 'routine', inspector: '赵工程师', department: '技术部', priority: 'low', status: 'overdue', scheduledDate: '2023-10-14', description: '检查对讲设备信号强度、通话质量、覆盖范围等', findings: '设备信号良好，通话清晰', recommendations: '建议增加信号放大器' },
-  { id: 'INS05', title: '应急报警系统巡检', location: '邹城市建设银行', type: 'emergency', inspector: '陈安全员', department: '安全部', priority: 'urgent', status: 'completed', scheduledDate: '2023-10-15', completedDate: '2023-10-15', score: 98, description: '检查应急报警系统、联动功能、响应时间等', findings: '系统响应迅速，联动功能正常', recommendations: '建议定期测试报警功能' }
+  { id: 'INS01', title: '监控摄像头设备巡检', location: '邹城市政府广场', type: 'routine', inspector: '张工程师', department: '技术部', priority: 'medium', status: 'completed', scheduledDate: '2025-07-15', completedDate: '2025-07-15', score: 95, description: '检查监控摄像头运行状态、图像质量、存储功能等', findings: '设备运行正常，图像清晰度良好', recommendations: '建议定期清洁镜头，优化存储空间' },
+  { id: 'INS02', title: '人脸识别系统巡检', location: '邹城火车站', type: 'special', inspector: '李技术员', department: '技术部', priority: 'high', status: 'in_progress', scheduledDate: '2025-07-15', description: '检查人脸识别系统识别率、数据库连接、报警功能等', findings: '识别率稳定在92%', recommendations: '建议优化夜间识别算法' },
+  { id: 'INS03', title: '车牌识别设备巡检', location: '邹城市高速入口', type: 'routine', inspector: '王维护员', department: '维护部', priority: 'medium', status: 'scheduled', scheduledDate: '2025-07-16', description: '检查车牌识别设备、数据传输、存储系统等', findings: '', recommendations: '' },
+  { id: 'INS004', title: '对讲设备系统巡检', location: '邹城市商业步行街', type: 'routine', inspector: '赵工程师', department: '技术部', priority: 'low', status: 'overdue', scheduledDate: '2025-07-14', description: '检查对讲设备信号强度、通话质量、覆盖范围等', findings: '设备信号良好，通话清晰', recommendations: '建议增加信号放大器' },
+  { id: 'INS05', title: '应急报警系统巡检', location: '邹城市建设银行', type: 'emergency', inspector: '陈安全员', department: '安全部', priority: 'urgent', status: 'completed', scheduledDate: '2025-07-15', completedDate: '2025-07-15', score: 98, description: '检查应急报警系统、联动功能、响应时间等', findings: '系统响应迅速，联动功能正常', recommendations: '建议定期测试报警功能' }
 ];
 
 // 整改项目数据
 const rectificationItems = [
-  { id: 'REC01', title: '监控设备镜头清洁', location: '邹城市政府广场', type: 'maintenance', assignee: '张工程师', priority: 'medium', status: 'pending', dueDate: '2023-10-20', description: '清洁监控摄像头镜头，提高图像清晰度', progress: 0 },
-  { id: 'REC02', title: '人脸识别算法优化', location: '邹城火车站', type: 'upgrade', assignee: '李技术员', priority: 'high', status: 'in_progress', dueDate: '2023-10-25', description: '优化夜间人脸识别算法，提高识别准确率', progress: 60 },
-  { id: 'REC03', title: '信号放大器安装', location: '邹城市商业步行街', type: 'installation', assignee: '赵工程师', priority: 'low', status: 'completed', dueDate: '2023-10-18', description: '安装信号放大器，改善对讲设备信号覆盖', progress: 100 }
+  { id: 'REC01', title: '监控设备镜头清洁', location: '邹城市政府广场', type: 'maintenance', assignee: '张工程师', priority: 'medium', status: 'pending', dueDate: '2025-07-20', description: '清洁监控摄像头镜头，提高图像清晰度', progress: 0 },
+  { id: 'REC02', title: '人脸识别算法优化', location: '邹城火车站', type: 'upgrade', assignee: '李技术员', priority: 'high', status: 'in_progress', dueDate: '2025-07-25', description: '优化夜间人脸识别算法，提高识别准确率', progress: 60 },
+  { id: 'REC03', title: '信号放大器安装', location: '邹城市商业步行街', type: 'installation', assignee: '赵工程师', priority: 'low', status: 'completed', dueDate: '2025-07-18', description: '安装信号放大器，改善对讲设备信号覆盖', progress: 100 }
 ];
 
 const InspectionManagement: React.FC = () => {
@@ -735,15 +735,15 @@ const InspectionManagement: React.FC = () => {
                   <Timeline>
                     <Timeline.Item color="green">
                       <div>监控设备巡检 - 正常</div>
-                      <div style={{ fontSize: 12, color: '#666' }}>2023-10-15</div>
+                      <div style={{ fontSize: 12, color: '#666' }}>2025-07-15</div>
                     </Timeline.Item>
                     <Timeline.Item color="blue">
                       <div>人脸识别系统巡检 - 进行中</div>
-                      <div style={{ fontSize: 12, color: '#666' }}>2023-10-15</div>
+                      <div style={{ fontSize: 12, color: '#666' }}>2025-07-15</div>
                     </Timeline.Item>
                     <Timeline.Item color="orange">
                       <div>车牌识别设备巡检 - 待安排</div>
-                      <div style={{ fontSize: 12, color: '#666' }}>2023-10-16</div>
+                      <div style={{ fontSize: 12, color: '#666' }}>2025-07-16</div>
                   </Timeline.Item>
                 </Timeline>
               </Card>

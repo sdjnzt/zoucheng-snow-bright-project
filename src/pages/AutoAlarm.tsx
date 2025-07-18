@@ -154,8 +154,8 @@ const AutoAlarm: React.FC = () => {
       status: 'active',
       priority: 'high',
       description: '监控学校周边可疑人员活动，预防安全事件',
-      createdTime: '2025-01-10 10:00:00',
-      lastTriggered: '2025-01-15 14:30:25',
+      createdTime: '2025-07-10 10:00:00',
+      lastTriggered: '2025-07-15 14:30:25',
       triggerCount: 15,
       enabled: true
     },
@@ -171,8 +171,8 @@ const AutoAlarm: React.FC = () => {
       status: 'active',
       priority: 'medium',
       description: '监控广场人员密度，预防踩踏事件',
-      createdTime: '2025-01-08 14:30:00',
-      lastTriggered: '2025-01-15 14:28:10',
+      createdTime: '2025-07-08 14:30:00',
+      lastTriggered: '2025-07-15 14:28:10',
       triggerCount: 8,
       enabled: true
     },
@@ -188,8 +188,8 @@ const AutoAlarm: React.FC = () => {
       status: 'active',
       priority: 'medium',
       description: '监控学校门口车辆违停情况',
-      createdTime: '2025-01-12 09:15:00',
-      lastTriggered: '2025-01-15 14:25:45',
+      createdTime: '2025-07-12 09:15:00',
+      lastTriggered: '2025-07-15 14:25:45',
       triggerCount: 12,
       enabled: true
     },
@@ -205,8 +205,8 @@ const AutoAlarm: React.FC = () => {
       status: 'testing',
       priority: 'high',
       description: '识别扒窃等异常行为',
-      createdTime: '2025-01-14 16:20:00',
-      lastTriggered: '2025-01-15 14:22:30',
+      createdTime: '2025-07-14 16:20:00',
+      lastTriggered: '2025-07-15 14:22:30',
       triggerCount: 5,
       enabled: false
     },
@@ -222,8 +222,8 @@ const AutoAlarm: React.FC = () => {
       status: 'inactive',
       priority: 'low',
       description: '夜间安全监控，预防盗窃事件',
-      createdTime: '2025-01-05 11:45:00',
-      lastTriggered: '2025-01-14 23:15:20',
+      createdTime: '2025-07-05 11:45:00',
+      lastTriggered: '2025-07-14 23:15:20',
       triggerCount: 3,
       enabled: false
     }
@@ -238,7 +238,7 @@ const AutoAlarm: React.FC = () => {
       type: 'person',
       location: '邹城市第一中学-东门',
       description: '检测到可疑人员徘徊，疑似在观察学校周边环境',
-      timestamp: '2025-01-15 14:30:25',
+      timestamp: '2025-07-15 14:30:25',
       status: 'triggered',
       severity: 'high',
       imageUrl: '/images/monitor/building.png',
@@ -251,7 +251,7 @@ const AutoAlarm: React.FC = () => {
       type: 'crowd',
       location: '邹城市人民广场-中心区域',
       description: '广场人员密度异常，超过安全阈值',
-      timestamp: '2025-01-15 14:28:10',
+      timestamp: '2025-07-15 14:28:10',
       status: 'acknowledged',
       severity: 'medium',
       imageUrl: '/images/monitor/building.png',
@@ -265,7 +265,7 @@ const AutoAlarm: React.FC = () => {
       type: 'vehicle',
       location: '邹城市实验小学-南门',
       description: '检测到未授权车辆在校门口长时间停留',
-      timestamp: '2025-01-15 14:25:45',
+      timestamp: '2025-07-15 14:25:45',
       status: 'resolved',
       severity: 'medium',
       imageUrl: '/images/monitor/building.png',
@@ -280,7 +280,7 @@ const AutoAlarm: React.FC = () => {
       type: 'behavior',
       location: '邹城市商业步行街-中段',
       description: '检测到异常行为模式，疑似扒窃行为',
-      timestamp: '2025-01-15 14:22:30',
+      timestamp: '2025-07-15 14:22:30',
       status: 'false_alarm',
       severity: 'high',
       imageUrl: '/images/monitor/building.png',
@@ -964,7 +964,7 @@ const AutoAlarm: React.FC = () => {
               <Space>
               <Text>共 {alarmHistory.length} 条记录</Text>
                 <Text type="secondary">|</Text>
-                <Text type="secondary">今日: {alarmHistory.filter(h => h.timestamp.includes('2025-01-15')).length} 条</Text>
+                <Text type="secondary">今日: {alarmHistory.filter(h => h.timestamp.includes('2025-07-15')).length} 条</Text>
                 <Text type="secondary">|</Text>
                 <Text type="secondary">待处理: {alarmHistory.filter(h => h.status === 'triggered').length} 条</Text>
                 <Text type="secondary">|</Text>
