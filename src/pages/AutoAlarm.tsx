@@ -732,7 +732,7 @@ const AutoAlarm: React.FC = () => {
       {/* 系统状态监控 */}
       <Card title="系统状态监控" style={{ marginBottom: '32px' }}>
         <Row gutter={24}>
-          <Col span={8}>
+        <Col span={8}>
             <Alert
               message="报警系统运行正常"
               description="所有报警规则运行正常，无异常情况"
@@ -740,8 +740,8 @@ const AutoAlarm: React.FC = () => {
               showIcon
               icon={<CheckCircleOutlined />}
             />
-          </Col>
-          <Col span={8}>
+        </Col>
+        <Col span={8}>
             <Alert
               message="AI识别准确率良好"
               description="人脸识别准确率: 87.9%，行为识别准确率: 82.3%"
@@ -749,8 +749,8 @@ const AutoAlarm: React.FC = () => {
               showIcon
               icon={<SecurityScanOutlined />}
             />
-          </Col>
-          <Col span={8}>
+        </Col>
+        <Col span={8}>
             <Alert
               message="响应时间达标"
               description="平均响应时间: 20.6分钟，满足30分钟内响应要求"
@@ -932,7 +932,7 @@ const AutoAlarm: React.FC = () => {
           } key="rules">
             <div style={{ marginBottom: '16px' }}>
               <Space>
-                <Text>共 {alarmRules.length} 条规则</Text>
+              <Text>共 {alarmRules.length} 条规则</Text>
                 <Text type="secondary">|</Text>
                 <Text type="secondary">活跃: {alarmRules.filter(r => r.enabled).length} 条</Text>
                 <Text type="secondary">|</Text>
@@ -962,7 +962,7 @@ const AutoAlarm: React.FC = () => {
           } key="history">
             <div style={{ marginBottom: '16px' }}>
               <Space>
-                <Text>共 {alarmHistory.length} 条记录</Text>
+              <Text>共 {alarmHistory.length} 条记录</Text>
                 <Text type="secondary">|</Text>
                 <Text type="secondary">今日: {alarmHistory.filter(h => h.timestamp.includes('2025-01-15')).length} 条</Text>
                 <Text type="secondary">|</Text>
