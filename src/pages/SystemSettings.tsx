@@ -34,7 +34,14 @@ import {
   Popconfirm,
   Tooltip,
   Steps,
-  Result
+  Result,
+  Timeline,
+  Drawer,
+  Menu,
+  Dropdown,
+  notification,
+  Flex,
+  Segmented
 } from 'antd';
 import {
   SettingOutlined,
@@ -69,9 +76,174 @@ import {
   SearchOutlined,
   VideoCameraOutlined,
   CloudOutlined,
-  DashboardOutlined
+  DashboardOutlined,
+  AuditOutlined,
+  ApiOutlined,
+  AppstoreOutlined,
+  BranchesOutlined,
+  BugOutlined,
+  BuildOutlined,
+  CalendarOutlined,
+  CameraOutlined,
+  CarOutlined,
+  CheckOutlined,
+  CloseOutlined,
+  CodeOutlined,
+  CompressOutlined,
+  ControlOutlined,
+  CrownOutlined,
+  DashboardOutlined as DashboardIcon,
+  DisconnectOutlined,
+  DollarOutlined,
+  DownloadOutlined as DownloadIcon,
+  ExclamationOutlined,
+  ExperimentOutlined,
+  EyeInvisibleOutlined,
+  FileDoneOutlined,
+  FileProtectOutlined,
+  FileSearchOutlined,
+  FileSyncOutlined,
+  FilterOutlined,
+  FireOutlined,
+  FlagOutlined,
+  FolderOutlined,
+  FrownOutlined,
+  FundOutlined,
+  GatewayOutlined,
+  GiftOutlined,
+  GlobalOutlined as GlobalIcon,
+  HeartOutlined,
+  HistoryOutlined,
+  HomeOutlined,
+  IdcardOutlined,
+  ImportOutlined,
+  InboxOutlined,
+  InsertRowAboveOutlined,
+  InsertRowBelowOutlined,
+  InsertRowLeftOutlined,
+  InsertRowRightOutlined,
+  InsuranceOutlined,
+  InteractionOutlined,
+  KeyOutlined as KeyIcon,
+  LaptopOutlined,
+  LayoutOutlined,
+  LeftOutlined,
+  LikeOutlined,
+  LineChartOutlined,
+  LinkOutlined,
+  LoadingOutlined,
+  LockOutlined as LockIcon,
+  LoginOutlined,
+  LogoutOutlined,
+  MacCommandOutlined,
+  MailOutlined as MailIcon,
+  ManOutlined,
+  MedicineBoxOutlined,
+  MehOutlined,
+  MenuOutlined,
+  MergeCellsOutlined,
+  MessageOutlined,
+  MobileOutlined,
+  MoneyCollectOutlined,
+  MonitorOutlined as MonitorIcon,
+  MoreOutlined,
+  NodeIndexOutlined,
+  NodeCollapseOutlined,
+  NotificationOutlined,
+  NumberOutlined,
+  OrderedListOutlined,
+  PaperClipOutlined,
+  PartitionOutlined,
+  PauseCircleOutlined,
+  PayCircleOutlined,
+  PercentageOutlined,
+  PhoneOutlined as PhoneIcon,
+  PictureOutlined,
+  PieChartOutlined,
+  PlayCircleOutlined,
+  PlaySquareOutlined,
+  PlusCircleOutlined,
+  PlusSquareOutlined,
+  PrinterOutlined,
+  ProfileOutlined,
+  ProjectOutlined,
+  PropertySafetyOutlined,
+  PullRequestOutlined,
+  PushpinOutlined,
+  QrcodeOutlined,
+  QuestionCircleOutlined,
+  QuestionOutlined,
+  RadiusBottomleftOutlined,
+  RadiusBottomrightOutlined,
+  RadiusUpleftOutlined,
+  RadiusUprightOutlined,
+  ReadOutlined,
+  ReconciliationOutlined,
+  RedEnvelopeOutlined,
+  RedoOutlined,
+  ReloadOutlined,
+  RestOutlined,
+  RightOutlined,
+  RocketOutlined,
+  RollbackOutlined,
+  SafetyCertificateOutlined,
+  SaveOutlined,
+  ScanOutlined,
+  ScheduleOutlined,
+  SearchOutlined as SearchIcon,
+  SecurityScanOutlined as SecurityIcon,
+  SendOutlined,
+  SettingOutlined as SettingIcon,
+  ShareAltOutlined,
+  ShopOutlined,
+  ShoppingCartOutlined,
+  ShoppingOutlined,
+  SisternodeOutlined,
+  SkinOutlined,
+  SmileOutlined,
+  SolutionOutlined,
+  SoundOutlined,
+  SplitCellsOutlined,
+  StarOutlined,
+  SubnodeOutlined,
+  SwapLeftOutlined,
+  SwapOutlined,
+  SwapRightOutlined,
+  SyncOutlined as SyncIcon,
+  TableOutlined,
+  TabletOutlined,
+  TagOutlined,
+  TagsOutlined,
+  TeamOutlined,
+  ThunderboltOutlined,
+  ToTopOutlined,
+  ToolOutlined as ToolIcon,
+  TrademarkCircleOutlined,
+  TrademarkOutlined,
+  TransactionOutlined,
+  TranslationOutlined,
+  TrophyOutlined,
+  UngroupOutlined,
+  UnlockOutlined as UnlockIcon,
+  UploadOutlined,
+  UserAddOutlined,
+  UserDeleteOutlined,
+  UserOutlined as UserIcon,
+  UserSwitchOutlined,
+  UsergroupAddOutlined,
+  UsergroupDeleteOutlined,
+  VerifiedOutlined,
+  VideoCameraOutlined as VideoIcon,
+  WalletOutlined,
+  WarningOutlined as WarningIcon,
+  WechatOutlined,
+  WeiboOutlined,
+  WindowsOutlined,
+  WomanOutlined
 } from '@ant-design/icons';
 import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
+dayjs.extend(relativeTime);
 
 const { TabPane } = Tabs;
 const { Title, Text, Paragraph } = Typography;
@@ -82,9 +254,9 @@ const { Step } = Steps;
 
 // 雪亮工程用户数据
 const users = [
-  { id: 1, name: '张主任', employeeId: 'EMP1', department: '雪亮工程监控中心', position: '监控中心主任', email: 'zhang@xueliang.gov.cn', phone: '138001381', status: 'active', level: 'admin', lastLogin: '2023-10-01 10:00' },
-  { id: 2, name: '李工程师', employeeId: 'EMP002', department: '技术部', position: '技术部经理', email: 'li@xueliang.gov.cn', phone: '138001382', status: 'active', level: 'manager', lastLogin: '2023-10-01 10:00' },
-  { id: 3, name: '王技术员', employeeId: 'EMP03', department: '设备维护组', position: '设备维护工程师', email: 'wang@xueliang.gov.cn', phone: '138001383', status: 'active', level: 'user', lastLogin: '2023-10-15 14:00' }
+  { id: 1, name: '张主任', employeeId: 'EMP1', department: '雪亮工程监控中心', position: '监控中心主任', email: 'zhang@xueliang.gov.cn', phone: '138001381', status: 'active', level: 'admin', lastLogin: '2023-10-01 10:00', avatar: '/api/placeholder/40/40', permissions: ['user_manage', 'system_config', 'data_backup', 'system_monitor'] },
+  { id: 2, name: '李工程师', employeeId: 'EMP002', department: '技术部', position: '技术部经理', email: 'li@xueliang.gov.cn', phone: '138001382', status: 'active', level: 'manager', lastLogin: '2023-10-01 10:00', avatar: '/api/placeholder/40/40', permissions: ['system_config', 'system_monitor'] },
+  { id: 3, name: '王技术员', employeeId: 'EMP03', department: '设备维护组', position: '设备维护工程师', email: 'wang@xueliang.gov.cn', phone: '138001383', status: 'active', level: 'user', lastLogin: '2023-10-15 14:00', avatar: '/api/placeholder/40/40', permissions: ['system_monitor'] }
 ];
 
 // 用户管理组件
@@ -93,6 +265,9 @@ const UserManagement: React.FC = () => {
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [editingUser, setEditingUser] = useState<any>(null);
   const [form] = Form.useForm();
+  const [searchText, setSearchText] = useState('');
+  const [statusFilter, setStatusFilter] = useState<string>('');
+  const [levelFilter, setLevelFilter] = useState<string>('');
 
   const handleAddUser = () => {
     setEditingUser(null);
@@ -129,8 +304,9 @@ const UserManagement: React.FC = () => {
         // 新增用户
         const newUser = {
           ...values,
-          id: `user${Date.now()}`,
-          avatar: '/api/placeholder/40/40'
+          id: Date.now(),
+          avatar: '/api/placeholder/40/40',
+          permissions: values.permissions || []
         };
         setUserList([...userList, newUser]);
         message.success('用户创建成功');
@@ -140,11 +316,20 @@ const UserManagement: React.FC = () => {
     });
   };
 
+  const filteredUsers = userList.filter(user => {
+    const matchesSearch = user.name.toLowerCase().includes(searchText.toLowerCase()) ||
+                         user.employeeId.toLowerCase().includes(searchText.toLowerCase()) ||
+                         user.email.toLowerCase().includes(searchText.toLowerCase());
+    const matchesStatus = !statusFilter || user.status === statusFilter;
+    const matchesLevel = !levelFilter || user.level === levelFilter;
+    return matchesSearch && matchesStatus && matchesLevel;
+  });
+
   const columns = [
     {
       title: '用户信息',
       key: 'user',
-      render: (record: any) => (
+      render: (_: any, record: any) => (
         <Space>
           <Avatar src={record.avatar} icon={<UserOutlined />} />
           <div>
@@ -157,7 +342,7 @@ const UserManagement: React.FC = () => {
     {
       title: '部门职位',
       key: 'department',
-      render: (record: any) => (
+      render: (_: any, record: any) => (
         <div>
           <div>{record.department}</div>
           <div style={{ fontSize: '12px', color: '#666' }}>{record.position}</div>
@@ -167,7 +352,7 @@ const UserManagement: React.FC = () => {
     {
       title: '联系方式',
       key: 'contact',
-      render: (record: any) => (
+      render: (_: any, record: any) => (
         <div>
           <div>{record.email}</div>
           <div style={{ fontSize: '12px', color: '#666' }}>{record.phone}</div>
@@ -178,10 +363,10 @@ const UserManagement: React.FC = () => {
       title: '状态',
       dataIndex: 'status',
       key: 'status',
-      render: (status: string) => (
+      render: (_: any, record: any) => (
         <Badge 
-          status={status === 'active' ? 'success' : status === 'inactive' ? 'error' : 'warning'} 
-          text={status === 'active' ? '活跃' : status === 'inactive' ? '停用' : '待激活'} 
+          status={record.status === 'active' ? 'success' : record.status === 'inactive' ? 'error' : 'warning'} 
+          text={record.status === 'active' ? '活跃' : record.status === 'inactive' ? '停用' : '待激活'} 
         />
       )
     },
@@ -189,9 +374,9 @@ const UserManagement: React.FC = () => {
       title: '权限级别',
       dataIndex: 'level',
       key: 'level',
-      render: (level: string) => (
-        <Tag color={level === 'admin' ? 'red' : level === 'manager' ? 'orange' : 'blue'}>
-          {level === 'admin' ? '管理员' : level === 'manager' ? '主管' : '普通用户'}
+      render: (_: any, record: any) => (
+        <Tag color={record.level === 'admin' ? 'red' : record.level === 'manager' ? 'orange' : 'blue'}>
+          {record.level === 'admin' ? '管理员' : record.level === 'manager' ? '主管' : '普通用户'}
         </Tag>
       )
     },
@@ -199,23 +384,31 @@ const UserManagement: React.FC = () => {
       title: '最后登录',
       dataIndex: 'lastLogin',
       key: 'lastLogin',
-      render: (date: string) => date || '从未登录'
+      render: (_: any, record: any) => (
+        <div>
+          <div>{record.lastLogin}</div>
+          <div style={{ fontSize: '12px', color: '#666' }}>
+            {dayjs(record.lastLogin).fromNow()}
+          </div>
+        </div>
+      )
     },
     {
       title: '操作',
       key: 'action',
-      render: (record: any) => (
+      render: (_: any, record: any) => (
         <Space>
-          <Button type="text" size="small" icon={<EditOutlined />} onClick={() => handleEditUser(record)}>
+          <Button size="small" icon={<EyeOutlined />} onClick={() => handleEditUser(record)}>
+            查看
+          </Button>
+          <Button size="small" icon={<EditOutlined />} onClick={() => handleEditUser(record)}>
             编辑
           </Button>
           <Popconfirm
             title="确定要删除这个用户吗？"
             onConfirm={() => handleDeleteUser(record.id)}
-            okText="确定"
-            cancelText="取消"
           >
-            <Button type="text" size="small" danger icon={<DeleteOutlined />}>
+            <Button size="small" danger icon={<DeleteOutlined />}>
               删除
             </Button>
           </Popconfirm>
@@ -226,24 +419,126 @@ const UserManagement: React.FC = () => {
 
   return (
     <div>
-      <div style={{ marginBottom: 16 }}>
-        <Button type="primary" icon={<PlusOutlined />} onClick={handleAddUser}>
-          添加用户
-        </Button>
-      </div>
-      
-      <Table 
-        dataSource={userList} 
-        columns={columns} 
-        rowKey="id"
-        pagination={{ pageSize: 10 }}
-      />
+      {/* 搜索和筛选 */}
+      <Card style={{ marginBottom: 16 }}>
+        <Row gutter={16} align="middle">
+          <Col span={8}>
+            <Input
+              placeholder="搜索用户名、工号或邮箱"
+              prefix={<SearchOutlined />}
+              value={searchText}
+              onChange={(e) => setSearchText(e.target.value)}
+              allowClear
+            />
+          </Col>
+          <Col span={4}>
+            <Select
+              placeholder="状态筛选"
+              value={statusFilter}
+              onChange={setStatusFilter}
+              allowClear
+              style={{ width: '100%' }}
+            >
+              <Option value="active">活跃</Option>
+              <Option value="inactive">停用</Option>
+              <Option value="pending">待激活</Option>
+            </Select>
+          </Col>
+          <Col span={4}>
+            <Select
+              placeholder="权限级别"
+              value={levelFilter}
+              onChange={setLevelFilter}
+              allowClear
+              style={{ width: '100%' }}
+            >
+              <Option value="admin">管理员</Option>
+              <Option value="manager">主管</Option>
+              <Option value="user">普通用户</Option>
+            </Select>
+          </Col>
+          <Col span={4}>
+            <Button type="primary" icon={<PlusOutlined />} onClick={handleAddUser}>
+              新增用户
+            </Button>
+          </Col>
+          <Col span={4}>
+            <Button icon={<ReloadOutlined />} onClick={() => {
+              setSearchText('');
+              setStatusFilter('');
+              setLevelFilter('');
+            }}>
+              重置
+            </Button>
+          </Col>
+        </Row>
+      </Card>
 
+      {/* 用户统计 */}
+      <Row gutter={16} style={{ marginBottom: 16 }}>
+        <Col span={6}>
+          <Card size="small">
+            <Statistic
+              title="总用户数"
+              value={userList.length}
+              prefix={<UserOutlined />}
+              valueStyle={{ color: '#1890ff' }}
+            />
+          </Card>
+        </Col>
+        <Col span={6}>
+          <Card size="small">
+            <Statistic
+              title="活跃用户"
+              value={userList.filter(u => u.status === 'active').length}
+              prefix={<CheckCircleOutlined />}
+              valueStyle={{ color: '#52c41a' }}
+            />
+          </Card>
+        </Col>
+        <Col span={6}>
+          <Card size="small">
+            <Statistic
+              title="管理员"
+              value={userList.filter(u => u.level === 'admin').length}
+              prefix={<CrownOutlined />}
+              valueStyle={{ color: '#faad14' }}
+            />
+          </Card>
+        </Col>
+        <Col span={6}>
+          <Card size="small">
+            <Statistic
+              title="今日登录"
+              value={userList.filter(u => dayjs(u.lastLogin).isSame(dayjs(), 'day')).length}
+              prefix={<LoginOutlined />}
+              valueStyle={{ color: '#722ed1' }}
+            />
+          </Card>
+        </Col>
+      </Row>
+
+      {/* 用户列表 */}
+      <Card>
+        <Table
+          dataSource={filteredUsers}
+          columns={columns}
+          rowKey="id"
+          pagination={{
+            pageSize: 10,
+            showSizeChanger: true,
+            showQuickJumper: true,
+            showTotal: (total, range) => `第 ${range[0]}-${range[1]} 条，共 ${total} 条`
+          }}
+        />
+      </Card>
+
+      {/* 用户编辑模态框 */}
       <Modal
-        title={editingUser ? '编辑用户' : '添加用户'}
+        title={editingUser ? '编辑用户' : '新增用户'}
         visible={isModalVisible}
-        onOk={handleSubmit}
         onCancel={() => setIsModalVisible(false)}
+        onOk={handleSubmit}
         width={600}
       >
         <Form form={form} layout="vertical">
@@ -254,8 +549,8 @@ const UserManagement: React.FC = () => {
               </Form.Item>
             </Col>
             <Col span={12}>
-              <Form.Item label="员工ID" name="employeeId" rules={[{ required: true, message: '请输入员工ID' }]}>
-                <Input placeholder="请输入员工ID" />
+              <Form.Item label="工号" name="employeeId" rules={[{ required: true, message: '请输入工号' }]}>
+                <Input placeholder="请输入工号" />
               </Form.Item>
             </Col>
           </Row>
@@ -265,9 +560,9 @@ const UserManagement: React.FC = () => {
                 <Select placeholder="请选择部门">
                   <Option value="雪亮工程监控中心">雪亮工程监控中心</Option>
                   <Option value="技术部">技术部</Option>
+                  <Option value="设备维护组">设备维护组</Option>
                   <Option value="安全部">安全部</Option>
-                  <Option value="行政部">行政部</Option>
-                  <Option value="数据分析部">数据分析部</Option>
+                  <Option value="运维部">运维部</Option>
                 </Select>
               </Form.Item>
             </Col>
@@ -284,8 +579,8 @@ const UserManagement: React.FC = () => {
               </Form.Item>
             </Col>
             <Col span={12}>
-              <Form.Item label="电话" name="phone" rules={[{ required: true, message: '请输入电话' }]}>
-                <Input placeholder="请输入电话" />
+              <Form.Item label="手机号" name="phone" rules={[{ required: true, message: '请输入手机号' }]}>
+                <Input placeholder="请输入手机号" />
               </Form.Item>
             </Col>
           </Row>
@@ -309,6 +604,30 @@ const UserManagement: React.FC = () => {
               </Form.Item>
             </Col>
           </Row>
+          <Form.Item label="权限设置" name="permissions">
+            <Checkbox.Group>
+              <Row>
+                <Col span={8}>
+                  <Checkbox value="user_manage">用户管理</Checkbox>
+                </Col>
+                <Col span={8}>
+                  <Checkbox value="system_config">系统配置</Checkbox>
+                </Col>
+                <Col span={8}>
+                  <Checkbox value="data_backup">数据备份</Checkbox>
+                </Col>
+                <Col span={8}>
+                  <Checkbox value="system_monitor">系统监控</Checkbox>
+                </Col>
+                <Col span={8}>
+                  <Checkbox value="device_control">设备控制</Checkbox>
+                </Col>
+                <Col span={8}>
+                  <Checkbox value="alert_manage">报警管理</Checkbox>
+                </Col>
+              </Row>
+            </Checkbox.Group>
+          </Form.Item>
         </Form>
       </Modal>
     </div>
@@ -515,9 +834,9 @@ const DataBackup: React.FC = () => {
             title: '备份类型',
             dataIndex: 'type',
             key: 'type',
-            render: (type: string) => (
-              <Tag color={type === 'full' ? 'blue' : 'green'}>
-                {type === 'full' ? '完整备份' : '增量备份'}
+            render: (_: any, record: any) => (
+              <Tag color={record.type === 'full' ? 'blue' : 'green'}>
+                {record.type === 'full' ? '完整备份' : '增量备份'}
               </Tag>
             )
           },
@@ -535,14 +854,14 @@ const DataBackup: React.FC = () => {
             title: '状态',
             dataIndex: 'status',
             key: 'status',
-            render: (status: string) => (
+            render: (_: any, record: any) => (
               <Badge status="success" text="完成" />
             )
           },
           {
             title: '操作',
             key: 'action',
-            render: (_, record: any) => (
+            render: (_: any, record: any) => (
               <Space>
                 <Button size="small" icon={<DownloadOutlined />} onClick={() => handleDownloadBackup(record)}>
                   下载
