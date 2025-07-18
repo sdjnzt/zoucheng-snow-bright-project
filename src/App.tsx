@@ -308,7 +308,7 @@ const AppLayout: React.FC = () => {
 
 const App: React.FC = () => {
   return (
-    <Router basename="/sdjkxj">
+    <Router>
       <AppLayout />
     </Router>
   );
