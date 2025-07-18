@@ -2,7 +2,7 @@
   "name": "zoucheng-snow-bright-project",
   "version": "1.0.0",
   "description": "邹城市人民政府办公室雪亮工程平台",
-  "homepage": "https://sdjnzt.github.io/sdjkxj",
+  "homepage": "https://sdjnzt.github.io/zoucheng-snow-bright-project",
   "private": true,
   "dependencies": {
     "@ant-design/icons": "^5.2.6",
