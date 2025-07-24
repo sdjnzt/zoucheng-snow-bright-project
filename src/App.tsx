@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { HashRouter as Router, Routes, Route, useNavigate, useLocation } from 'react-router-dom';
-import { Layout, Menu, theme, Button, Avatar, Dropdown, Space, Typography } from 'antd';
+import React, { useState, useEffect } from 'react';
+import { HashRouter as Router, Routes, Route, useNavigate, useLocation, Navigate } from 'react-router-dom';
+import { Layout, Menu, theme, Button, Avatar, Dropdown, Space, Typography, message } from 'antd';
 import {
   DashboardOutlined,
   TeamOutlined,
@@ -41,6 +41,7 @@ import InspectionManagement from './pages/InspectionManagement';
 import DataReport from './pages/DataReport';
 import ImageTest from './components/ImageTest';
 import FaceInfoTest from './components/FaceInfoTest';
+import Login from './pages/Login';
 
 const { Header, Sider, Content } = Layout;
 
@@ -109,6 +110,18 @@ const menuItems = [
   },
 ];
 
+// 添加路由守卫组件
+const PrivateRoute: React.FC<{ element: React.ReactElement }> = ({ element }) => {
+  const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
+  const location = useLocation();
+
+  if (!isLoggedIn) {
+    return <Navigate to="/login" state={{ from: location }} replace />;
+  }
+
+  return element;
+};
+
 const AppLayout: React.FC = () => {
   const [collapsed, setCollapsed] = useState(false);
   const [notificationCount, setNotificationCount] = useState(3); // 模拟通知数量
@@ -124,7 +137,15 @@ const AppLayout: React.FC = () => {
     // 这里可以添加通知面板的逻辑
   };
 
-  // 处理管理员菜单点击
+  // 处理退出登录
+  const handleLogout = () => {
+    localStorage.removeItem('isLoggedIn');
+    localStorage.removeItem('user');
+    message.success('已成功退出登录');
+    navigate('/login');
+  };
+
+  // 修改管理员菜单点击处理函数
   const handleAdminMenuClick = ({ key }: { key: string }) => {
     switch (key) {
       case 'profile':
@@ -134,8 +155,7 @@ const AppLayout: React.FC = () => {
         console.log('打开账户设置');
         break;
       case 'logout':
-        console.log('用户退出登录');
-        // 这里可以添加退出登录的逻辑
+        handleLogout();
         break;
       default:
         break;
@@ -309,7 +329,12 @@ const AppLayout: React.FC = () => {
 const App: React.FC = () => {
   return (
     <Router>
-      <AppLayout />
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route path="/*" element={
+          <PrivateRoute element={<AppLayout />} />
+        } />
+      </Routes>
     </Router>
   );
 };
